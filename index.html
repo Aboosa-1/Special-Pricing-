@@ -202,7 +202,7 @@
           <input id="qty" type="number" min="1" step="1" value="30000" inputmode="numeric" />
         </div>
 
-        <div class="section">
+        <div class="section" id="lamWrap">
           <div class="toggle">
             <span>إضافة سلوفان</span>
             <label class="switch">
@@ -394,7 +394,9 @@
       const qty = Number($('qty').value);
       const shape = $('shape').value;
       const material = $('material').value;
-      const lam = $('lam').checked;
+      // السلوفان اختياري للورق فقط، وإجباري ضمن تكلفة البلاستيك والشفاف.
+      const lam = material === 'paper' ? $('lam').checked : true;
+      $('lamWrap').hidden = material !== 'paper';
       const status = $('status');
       status.classList.remove('show');
       status.textContent = '';
@@ -440,7 +442,8 @@
       // For arbitrary B, use B exactly (NEVER round to a pricing bracket).
       // Only H and printFactor come from the last defined Excel row <= B.
       const rule = getTier(quarters, cfg.tiers);
-      const lamRate = lam ? 1 : 0;
+      // سعر السلوفان مأخوذ من إعدادات الخامة نفسها: 0 للورق، 1 للورق مع سلوفان أو للبلاستيك/الشفاف.
+      const lamRate = cfg.lamRate;
       const printRun = quarters * lamRate + cfg.zinc + cfg.press * rule.printFactor + cfg.transport;
       const surcharge = printRun * 0.25;
       const materialCost = (quarters + rule.paperWaste) * cfg.paper;
