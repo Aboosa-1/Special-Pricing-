@@ -291,81 +291,561 @@
 
   <script>
     const DATA = {
-      paper: {
-        paper: 4.5, zinc: 250, press: 500, transport: 200, lamRate: 0,
-        tiers: [
-          {q:500,mult:2,printFactor:1,paperWaste:80,salePrice:7550},
-          {q:600,mult:2,printFactor:1,paperWaste:80,salePrice:8450},
-          {q:700,mult:1.95,printFactor:1,paperWaste:80,salePrice:8950},
-          {q:800,mult:1.9,printFactor:1,paperWaste:80,salePrice:9750},
-          {q:900,mult:1.85,printFactor:1,paperWaste:80,salePrice:10350},
-          {q:1000,mult:1.8,printFactor:1,paperWaste:80,salePrice:10850},
-          {q:1200,mult:1.8,printFactor:1.22,paperWaste:80,salePrice:12750},
-          {q:1300,mult:1.8,printFactor:1.5,paperWaste:80,salePrice:13800},
-          {q:1400,mult:1.8,printFactor:2,paperWaste:0,salePrice:14600},
-          {q:1500,mult:1.75,printFactor:2,paperWaste:80,salePrice:15600},
-          {q:1600,mult:1.7,printFactor:2,paperWaste:80,salePrice:15900},
-          {q:1700,mult:1.7,printFactor:2,paperWaste:80,salePrice:16650},
-          {q:1800,mult:1.7,printFactor:2,paperWaste:80,salePrice:17450},
-          {q:2000,mult:1.6,printFactor:2,paperWaste:80,salePrice:17850},
-          {q:2250,mult:1.55,printFactor:2,paperWaste:80,salePrice:19000},
-          {q:2500,mult:1.5,printFactor:3,paperWaste:80,salePrice:21000},
-          {q:2750,mult:1.48,printFactor:3,paperWaste:80,salePrice:22450},
-          {q:3000,mult:1.47,printFactor:3,paperWaste:80,salePrice:23950}
-        ]
+  "paper": {
+    "paper": 4.5,
+    "zinc": 250,
+    "press": 450,
+    "lamRate": 0,
+    "tiers": [
+      {
+        "q": 500,
+        "mult": 3.0,
+        "printFactor": 1,
+        "paperWaste": 80,
+        "lamBasis": null
       },
-      paperLam: {
-        paper: 4.5, zinc: 250, press: 500, transport: 200, lamRate: 1,
-        tiers: [
-          {q:500,mult:2,printFactor:1,paperWaste:80,salePrice:8800},
-          {q:600,mult:2,printFactor:1,paperWaste:80,salePrice:9950},
-          {q:700,mult:1.95,printFactor:1,paperWaste:80,salePrice:10850},
-          {q:800,mult:1.9,printFactor:1,paperWaste:80,salePrice:11650},
-          {q:900,mult:1.85,printFactor:1,paperWaste:80,salePrice:12400},
-          {q:1000,mult:1.8,printFactor:1,paperWaste:80,salePrice:13100},
-          {q:1200,mult:1.8,printFactor:1.22,paperWaste:80,salePrice:15450},
-          {q:1300,mult:1.8,printFactor:1.5,paperWaste:80,salePrice:16800},
-          {q:1400,mult:1.8,printFactor:2,paperWaste:0,salePrice:17750},
-          {q:1500,mult:1.75,printFactor:2,paperWaste:80,salePrice:18850},
-          {q:1600,mult:1.7,printFactor:2,paperWaste:80,salePrice:19300},
-          {q:1700,mult:1.7,printFactor:2,paperWaste:80,salePrice:20300},
-          {q:1800,mult:1.7,printFactor:2,paperWaste:80,salePrice:21250},
-          {q:2000,mult:1.6,printFactor:2,paperWaste:80,salePrice:21850},
-          {q:2250,mult:1.55,printFactor:2,paperWaste:80,salePrice:23400},
-          {q:2500,mult:1.5,printFactor:3,paperWaste:80,salePrice:25750},
-          {q:2750,mult:1.48,printFactor:3,paperWaste:80,salePrice:27500},
-          {q:3000,mult:1.47,printFactor:3,paperWaste:80,salePrice:29450}
-        ]
+      {
+        "q": 600,
+        "mult": 2.95,
+        "printFactor": 1,
+        "paperWaste": 80,
+        "lamBasis": null
       },
-      plastic: {
-        paper: 9, zinc: 250, press: 1000, transport: 200, lamRate: 1,
-        tiers: [
-          {q:500,mult:2,printFactor:1,paperWaste:80,salePrice:15300},
-          {q:600,mult:2,printFactor:1,paperWaste:80,salePrice:17350},
-          {q:700,mult:1.95,printFactor:1,paperWaste:80,salePrice:18900},
-          {q:800,mult:1.9,printFactor:1,paperWaste:80,salePrice:20390},
-          {q:900,mult:1.85,printFactor:1,paperWaste:80,salePrice:21750},
-          {q:1000,mult:1.8,printFactor:1,paperWaste:80,salePrice:22950},
-          {q:1200,mult:1.8,printFactor:1.22,paperWaste:80,salePrice:27150},
-          {q:1300,mult:1.8,printFactor:1.5,paperWaste:80,salePrice:29350},
-          {q:1400,mult:1.8,printFactor:2,paperWaste:0,salePrice:31300},
-          {q:1500,mult:1.75,printFactor:2,paperWaste:80,salePrice:33500},
-          {q:1600,mult:1.7,printFactor:2,paperWaste:80,salePrice:34300},
-          {q:1700,mult:1.7,printFactor:2,paperWaste:80,salePrice:35950},
-          {q:1800,mult:1.7,printFactor:2,paperWaste:80,salePrice:37950},
-          {q:2000,mult:1.6,printFactor:2,paperWaste:80,salePrice:38850},
-          {q:2250,mult:1.55,printFactor:2,paperWaste:80,salePrice:41600},
-          {q:2500,mult:1.5,printFactor:3,paperWaste:80,salePrice:45950},
-          {q:2750,mult:1.48,printFactor:3,paperWaste:80,salePrice:48950},
-          {q:3000,mult:1.47,printFactor:3,paperWaste:80,salePrice:52500}
-        ]
+      {
+        "q": 700,
+        "mult": 2.9,
+        "printFactor": 1,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 800,
+        "mult": 2.85,
+        "printFactor": 1,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 900,
+        "mult": 2.8,
+        "printFactor": 1,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 1000,
+        "mult": 2.75,
+        "printFactor": 1,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 1200,
+        "mult": 2.7,
+        "printFactor": 2,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 1300,
+        "mult": 2.65,
+        "printFactor": 2,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 1400,
+        "mult": 2.6,
+        "printFactor": 2,
+        "paperWaste": 0,
+        "lamBasis": null
+      },
+      {
+        "q": 1500,
+        "mult": 2.55,
+        "printFactor": 2,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 1600,
+        "mult": 2.5,
+        "printFactor": 2,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 1700,
+        "mult": 2.45,
+        "printFactor": 2,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 1800,
+        "mult": 2.4,
+        "printFactor": 2,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 2000,
+        "mult": 2.35,
+        "printFactor": 2,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 2250,
+        "mult": 2.3,
+        "printFactor": 3,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 2500,
+        "mult": 2.25,
+        "printFactor": 3,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 2750,
+        "mult": 2.2,
+        "printFactor": 3,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 3000,
+        "mult": 2.15,
+        "printFactor": 3,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 5000,
+        "mult": 2.1,
+        "printFactor": 5,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 7000,
+        "mult": 2.05,
+        "printFactor": 7,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 10000,
+        "mult": 2.0,
+        "printFactor": 10,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 12000,
+        "mult": 1.95,
+        "printFactor": 12,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 15000,
+        "mult": 1.9,
+        "printFactor": 15,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 18000,
+        "mult": 1.85,
+        "printFactor": 18,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 20000,
+        "mult": 1.8,
+        "printFactor": 20,
+        "paperWaste": 80,
+        "lamBasis": null
       }
-    };
+    ]
+  },
+  "paperLam": {
+    "paper": 4.5,
+    "zinc": 250,
+    "press": 450,
+    "lamRate": 1,
+    "tiers": [
+      {
+        "q": 500,
+        "mult": 3.0,
+        "printFactor": 1,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 600,
+        "mult": 2.95,
+        "printFactor": 1,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 700,
+        "mult": 2.9,
+        "printFactor": 1,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 800,
+        "mult": 2.85,
+        "printFactor": 1,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 900,
+        "mult": 2.8,
+        "printFactor": 1,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 1000,
+        "mult": 2.75,
+        "printFactor": 1,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 1200,
+        "mult": 2.7,
+        "printFactor": 2,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 1300,
+        "mult": 2.65,
+        "printFactor": 2,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 1400,
+        "mult": 2.6,
+        "printFactor": 2,
+        "paperWaste": 0,
+        "lamBasis": null
+      },
+      {
+        "q": 1500,
+        "mult": 2.55,
+        "printFactor": 2,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 1600,
+        "mult": 2.5,
+        "printFactor": 2,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 1700,
+        "mult": 2.45,
+        "printFactor": 2,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 1800,
+        "mult": 2.4,
+        "printFactor": 2,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 2000,
+        "mult": 2.35,
+        "printFactor": 2,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 2250,
+        "mult": 2.3,
+        "printFactor": 3,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 2500,
+        "mult": 2.25,
+        "printFactor": 3,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 2750,
+        "mult": 2.2,
+        "printFactor": 3,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 3000,
+        "mult": 2.15,
+        "printFactor": 3,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 5000,
+        "mult": 2.1,
+        "printFactor": 5,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 7000,
+        "mult": 2.05,
+        "printFactor": 7,
+        "paperWaste": 80,
+        "lamBasis": 5000
+      },
+      {
+        "q": 10000,
+        "mult": 2.0,
+        "printFactor": 10,
+        "paperWaste": 80,
+        "lamBasis": 5000
+      },
+      {
+        "q": 12000,
+        "mult": 1.95,
+        "printFactor": 12,
+        "paperWaste": 80,
+        "lamBasis": 5000
+      },
+      {
+        "q": 15000,
+        "mult": 1.9,
+        "printFactor": 15,
+        "paperWaste": 80,
+        "lamBasis": 5000
+      },
+      {
+        "q": 18000,
+        "mult": 1.85,
+        "printFactor": 18,
+        "paperWaste": 80,
+        "lamBasis": 5000
+      },
+      {
+        "q": 20000,
+        "mult": 1.8,
+        "printFactor": 20,
+        "paperWaste": 80,
+        "lamBasis": null
+      }
+    ]
+  },
+  "plastic": {
+    "paper": 9.5,
+    "zinc": 250,
+    "press": 1000,
+    "lamRate": 1,
+    "tiers": [
+      {
+        "q": 500,
+        "mult": 3.0,
+        "printFactor": 1,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 600,
+        "mult": 2.95,
+        "printFactor": 1,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 700,
+        "mult": 2.9,
+        "printFactor": 1,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 800,
+        "mult": 2.85,
+        "printFactor": 1,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 900,
+        "mult": 2.8,
+        "printFactor": 1,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 1000,
+        "mult": 2.75,
+        "printFactor": 1,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 1200,
+        "mult": 2.7,
+        "printFactor": 2,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 1300,
+        "mult": 2.65,
+        "printFactor": 2,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 1400,
+        "mult": 2.6,
+        "printFactor": 2,
+        "paperWaste": 0,
+        "lamBasis": null
+      },
+      {
+        "q": 1500,
+        "mult": 2.55,
+        "printFactor": 2,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 1600,
+        "mult": 2.5,
+        "printFactor": 2,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 1700,
+        "mult": 2.45,
+        "printFactor": 2,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 1800,
+        "mult": 2.4,
+        "printFactor": 2,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 2000,
+        "mult": 2.35,
+        "printFactor": 2,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 2250,
+        "mult": 2.3,
+        "printFactor": 3,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 2500,
+        "mult": 2.25,
+        "printFactor": 3,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 2750,
+        "mult": 2.2,
+        "printFactor": 3,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 3000,
+        "mult": 2.15,
+        "printFactor": 3,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 5000,
+        "mult": 2.1,
+        "printFactor": 5,
+        "paperWaste": 80,
+        "lamBasis": null
+      },
+      {
+        "q": 7000,
+        "mult": 2.05,
+        "printFactor": 7,
+        "paperWaste": 80,
+        "lamBasis": 5000
+      },
+      {
+        "q": 10000,
+        "mult": 2.0,
+        "printFactor": 10,
+        "paperWaste": 80,
+        "lamBasis": 5000
+      },
+      {
+        "q": 12000,
+        "mult": 1.95,
+        "printFactor": 12,
+        "paperWaste": 80,
+        "lamBasis": 5000
+      },
+      {
+        "q": 15000,
+        "mult": 1.9,
+        "printFactor": 15,
+        "paperWaste": 80,
+        "lamBasis": 5000
+      },
+      {
+        "q": 18000,
+        "mult": 1.85,
+        "printFactor": 18,
+        "paperWaste": 80,
+        "lamBasis": 5000
+      },
+      {
+        "q": 20000,
+        "mult": 1.8,
+        "printFactor": 20,
+        "paperWaste": 80,
+        "lamBasis": null
+      }
+    ]
+  }
+};
 
     const $ = id => document.getElementById(id);
     const fmt = n => new Intl.NumberFormat('en-EG',{maximumFractionDigits:0}).format(n);
-    const fmtMoney = n => new Intl.NumberFormat('en-EG',{minimumFractionDigits:0,maximumFractionDigits:0}).format(Math.round(n));
-    const fmtUnit = n => new Intl.NumberFormat('en-EG',{minimumFractionDigits:2,maximumFractionDigits:3}).format(n);
+    const fmtMoney = n => new Intl.NumberFormat('en-EG',{minimumFractionDigits:0,maximumFractionDigits:3}).format(Math.round((n+Number.EPSILON)*1000)/1000);
+    const fmtUnit = n => new Intl.NumberFormat('en-EG',{minimumFractionDigits:2,maximumFractionDigits:4}).format(n);
 
     let lastResult = null;
 
@@ -436,16 +916,17 @@
       }
 
       const cfg = DATA[currentPriceKey()];
-      // The Excel workbook calculates each row from B (quarter count) using
-      // D = B*L6 + L4 + L5*printFactor + L7
-      // C = D*25%, E = (B + paperWaste)*L3, F = C + D + E, G = F*H.
-      // For arbitrary B, use B exactly (NEVER round to a pricing bracket).
-      // Only H and printFactor come from the last defined Excel row <= B.
+      // 2026 pricing model: use actual quarter count for all proportional costs.
+      // The last matching workbook row supplies the profit multiplier and setup count.
+      // The workbook lists 500..20000 quarters; beyond that, retain the final multiplier
+      // and continue 1000-quarter press setups (extrapolation, not a workbook row).
       const rule = getTier(quarters, cfg.tiers);
-      // سعر السلوفان مأخوذ من إعدادات الخامة نفسها: 0 للورق، 1 للورق مع سلوفان أو للبلاستيك/الشفاف.
-      const lamRate = cfg.lamRate;
-      const printRun = quarters * lamRate + cfg.zinc + cfg.press * rule.printFactor + cfg.transport;
-      const surcharge = printRun * 0.25;
+      const printFactor = quarters > 20000 ? Math.ceil(quarters / 1000) : rule.printFactor;
+      // Operating = lamination/quarter + zinc + plate/press setup*factor.
+      const laminationQuantity = (rule.lamBasis == null || quarters > 20000) ? quarters : rule.lamBasis;
+      const printRun = laminationQuantity * cfg.lamRate + cfg.zinc + cfg.press * printFactor;
+      // Production overhead in the newly supplied workbook is 7%, not 25%.
+      const surcharge = printRun * 0.07;
       const materialCost = (quarters + rule.paperWaste) * cfg.paper;
       const totalCost = printRun + surcharge + materialCost;
       const finalPrice = totalCost * rule.mult;
